@@ -33,11 +33,11 @@
         <th scope="col" class="titleColumn" onclick="sortTable(2)" style="cursor:pointer">DATA DE REQUISIÇÃO
           <img src="{{asset('images/sort.png')}}" style="height:15px"></th>
         <th scope="col" class="titleColumn">HORA DE REQUISIÇÃO</th>
-        <th scope="col" class="titleColumn" >AÇÃO</th>
         <!-- <th scope="col" class="titleColumn" >STATUS</th> -->
         @if($titulo=="Outros" | $titulo=="Programa de Disciplina")
             <th scope="col">INFORMAÇÕES</th>
         @endif
+        <th scope="col" class="titleColumn" >AÇÃO</th>
         </tr>
         </thead>
           <tbody>
@@ -56,6 +56,9 @@
               <td>{{$requisicao_documento['vinculo']}}</td>
               <td>{{$requisicao_documento['status_data']}}</td>
               <td>{{$requisicao_documento['status_hora']}}</td>
+              @if($titulo=="Outros" | $titulo=="Programa de Disciplina")
+              <td>{{$requisicao_documento['detalhes']}}</td>
+              @endif
               <td>
                 <a id="botao" data-toggle="modal" data-target="#myModal" aria-hidden="true" onclick="mudarId({{$requisicao_documento['id']}});"
                       data-whatever="{{$requisicao_documento['nome']}}">
@@ -68,6 +71,7 @@
                       </span>
                 </a>
               </td>
+
               </tr>
                 @endforeach
               <!-- </div> -->
